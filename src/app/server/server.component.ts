@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
 	selector: 'app-server',
@@ -6,9 +6,18 @@ import { Component } from '@angular/core';
 	styleUrls: ['./server.component.css']
 })
 export class ServerComponent {
-	constructor() {}
+	serverId: number = 10;
+	serverStatus: string = 'offline';
 
-	ngOnInit() {
-		
+	constructor() {
+		this.serverStatus = Math.random() > 0.5 ? 'online' : 'offline';
+	}
+
+	status() {
+		return this.serverStatus;
+	}
+
+	statusColor() {
+		return this.serverStatus === 'online' ? 'green' : 'red';
 	}
 }
